@@ -2,12 +2,13 @@ package br.ufjf.dcc196.izabel.estatisticasdebasquete;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     TextView textViewPontos;
     TextView textViewArremessos;
@@ -58,5 +59,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key){
+        switch (key){
+            case EstatisticasRepository.PONTOS_KEY:
+                textViewPontos.setText(repo.getPontos().toString());
+                break;
+        }
+    }
 
 }

@@ -8,7 +8,7 @@ public class EstatisticasRepository {
     private Context context;
     private SharedPreferences preferences;
     private final String PREFERENCES_NAME = "br.ufjf.dcc196.izabel.estatisticasbasquete";
-    private final String PONTOS_KEY = "PONTOS_KEY";
+    public final static String PONTOS_KEY = "PONTOS_KEY";
 
     public EstatisticasRepository(Context context){
         this.context = context;
