@@ -19,6 +19,16 @@ public class EstatisticasRepository {
         return preferences.getInt(PONTOS_KEY,0);
     }
 
+    public void incPontos(){
+        Integer pontos = getPontos() + 1;
+        setPontos(pontos);
+    }
+
+    public void decPontos(){
+        Integer pontos = getPontos() - 1;
+        setPontos(pontos);
+    }
+
     public void setPontos(Integer pontos){
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt(PONTOS_KEY, pontos);

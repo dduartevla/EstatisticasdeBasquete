@@ -19,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
     Button buttonBloqueiosInc;
     Button buttonBloqueiosDec;
 
-    Integer pontos = 0;
+
+    EstatisticasRepository repo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,20 +38,23 @@ public class MainActivity extends AppCompatActivity {
         buttonBloqueiosInc = findViewById(R.id.buttonBloqueiosInc);
         buttonBloqueiosDec = findViewById(R.id.buttonBloqueiosDec);
 
-        textViewPontos.setText(pontos.toString());
+        repo = new EstatisticasRepository(getApplicationContext());
+        textViewPontos.setText(repo.getPontos().toString());
+
     }
 
     public void onButtonClick(View view){
         switch (view.getId()){
             case R.id.buttonPontosInc:
-                pontos ++;
-                textViewPontos.setText(pontos.toString());
+                repo.incPontos();
+                textViewPontos.setText(repo.getPontos().toString());
                 break;
 
             case R.id.buttonPontosDec:
-                if (pontos>0)
-                pontos--;
-                textViewPontos.setText(pontos.toString());
+                if (repo.getPontos() >0)
+                    repo.decPontos();
+                textViewPontos.setText(repo.getPontos().toString());
+                break;
         }
     }
 
